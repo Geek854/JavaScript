@@ -94,40 +94,73 @@
 // alert("Половина вашего числа равна " + q);
 
 // 4.
-function multiply(r) {
-    let p = 0;
-    p = 4 * 3.14 * radius();
+// function multiply(r) {
+//     let p = 0;
+//     p = 4 * 3.14 * radius();
 
-    function radius() {
-        let g = 0;
-        g = r * r;
-        return g;
+//     function radius() {
+//         let g = 0;
+//         g = r * r;
+//         return g;
+//     }
+//     return p;
+// }
+// let r = +prompt("чтобы узнать площадь планеты, укажите ее экваториальный радиус, км: ");
+// let q = multiply(r);
+// q = parseInt(q).toLocaleString();
+// let planet = 0;
+// if (r === 2440) {
+//     planet = "Меркурий";
+// } else if (r === 6052) {
+//     planet = "Венера";
+// } else if (r === 6378) {
+//     planet = "Земля";
+// } else if (r === 3397) {
+//     planet = "Марс";
+// } else if (r === 71490) {
+//     planet = "Юпитер";
+// } else if (r === 60270) {
+//     planet = "Сатурн";
+// } else if (r === 25560) {
+//     planet = "Уран";
+// } else if (r === 24760) {
+//     planet = "Нептун";
+// } else if (r === 1151) {
+//     planet = "Плутон";
+// } else {
+//     planet = "нам неизвестна"
+// }
+// alert("Площедь планеты равна " + q + " км.," + " это планета " + planet);
+
+
+// ПРИМЕР 5
+
+// 5 Реализовать функцию с тремя параметрами: function mathOperation(arg1, arg2, operation),
+// где arg1, arg2 – значения аргументов, operation – строка с названием операции. В зависимости от
+// переданного значения операции (использовать switch) выполнить одну из арифметических
+// операций
+// (использовать функции из задания 4) и вернуть полученное значение.
+function mathOperation(arg1, arg2, operation) {
+    switch (operation) {
+        case "+":
+            let fold = arg1 + arg2;
+            alert("Результат равен: " + fold);
+            break;
+        case "-":
+            let subtract = arg1 - arg2;
+            alert("Результат равен: " + subtract);
+            break;
+        case "*":
+            let multiply = arg1 * arg2;
+            alert("Результат равен: " + multiply);
+            break;
+        case "/":
+            let splitUp = arg1 / arg2;
+            alert("Результат равен: " + splitUp);
+            break;
     }
-    return p;
 }
-let r = +prompt("чтобы узнать площадь планеты, укажите ее экваториальный радиус, км: ");
-let q = multiply(r);
-q = parseInt(q).toLocaleString();
-let planet = 0;
-if (r === 2440) {
-    planet = "Меркурий";
-} else if (r === 6052) {
-    planet = "Венера";
-} else if (r === 6378) {
-    planet = "Земля";
-} else if (r === 3397) {
-    planet = "Марс";
-} else if (r === 71490) {
-    planet = "Юпитер";
-} else if (r === 60270) {
-    planet = "Сатурн";
-} else if (r === 25560) {
-    planet = "Уран";
-} else if (r === 24760) {
-    planet = "Нептун";
-} else if (r === 1151) {
-    planet = "Плутон";
-} else {
-    planet = "нам неизвестна"
-}
-alert("Площедь планеты равна " + q + " км.," + " это планета " + planet);
+let arg1 = parseInt(+prompt("введите первое число: "));
+let arg2 = parseInt(+prompt("введите второе число: "));
+let operation = prompt("Что вы хотите сделать с введенными числами? Введите нужный символ '+'; '-'; '*'; '/'");
+mathOperation(arg1, arg2, operation);
