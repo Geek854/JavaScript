@@ -1,0 +1,65 @@
+.product {
+    width: 200px;
+    padding: 10px;
+    float: left;
+    margin-right: 30px;
+    box-shadow: 0 0 4px black;
+}
+
+.message {
+    width: 150px;
+    padding: 20px;
+    background: lightgoldenrodyellow;
+    border: 1px solid orange;
+    display: none;
+}
+
+i {
+    font-size: 50px;
+}
+
+.golden {
+    color: gold;
+}
+
+.product {
+    padding: 20px;
+    float: left;
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+
+button {
+    display: block;
+}
+
+body {
+    font-size: 30px;
+    font-family: sans-serif;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(4, 300px);
+    grid-gap: 20px;
+}
+
+.product {
+    border: 1px solid gray;
+    padding: 15px;
+    text-align: center;
+}
+
+.imgWrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 35px;
+}
+
+img {
+    max-width: 100%;
+}
+
+img[src*=".gif"] {
+    width: 150px;
+}
