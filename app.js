@@ -1,197 +1,260 @@
-lesson2
+// lesson6
 "use strict";
 
+// задания 1 уровня
 
-// // ПРИМЕР 1
+// <!-- Задание. Сделайте чтобы в src была картинка 2.jpg, для этого:
+// 1. Найдите картинку, например с помощью querySelector
+// 2. Измените атрибут src, например с помощью setAttribute -->
+let img = document.querySelector('img');
+img.setAttribute('src', 'images/2.jpg');
 
-// // 1 Объясните почему код даёт именно такие результаты?
-// //пример 1
-let a = 1,
-    b = 1,
-    c, d;
-c = ++a;
-alert(c); // ответ: 2, потому что инкремент увеличел значение операнда да 1;
-//пример 2
-d = b++;
-alert(d); //ответ: 1, постфиксная форма, значене операнда увеличется после выполнения каманды;
-//пример 3
-c = 2 + ++a;
-alert(c); //ответ: 5, так как а уже равно 2 , операнд увеличит а на 1, то значение а станет 3. 2+3=5;
-//пример 4
-d = 2 + b++;
-alert(d); //ответ: 4, постфиксная форма, значене операнда увеличется после выполнения каманды, но так как предидущие действия в примере 2 с помощью постфиксной формы увеличили операнд на еденицу и он стал равен 2, то соответственно 2+2=4.
-alert(a); //3, так как после примера 3, ни коких действий с переменно а не было значение осталось равным 3.
-alert(b); //3, так как в римере 4, использовалась постфиксная форма, значение операнда увеличилось на 1, соответствено переменная b стала равна 3.
+// <!-- Задание.
+//     1. Сделайте всем элементам .product какой-нибудь фон, для этого:
+//         1.1 Найдите все элементы с классом .product, например с помощью
+//         querySelectorAll
+//         1.2 Затем переберите эту коллекцию, например с помощью forEach,
+//         у коллбэк-функции, передаваемой в forEach определите параметр,
+//         назовите его например product
+//         1.3 Чтобы менять стили обратитесь к параметру product и его свойству
+//         style
 
+//     2. Сделайте элементам .productName размер шрифта 24px, для этого:
+//         2.1 Найдите все элементы с классом .productName, например с помощью
+//         querySelectorAll
+//         2.2 Затем переберите эту коллекцию, например с помощью forEach,
+//         у коллбэк-функции, передаваемой в forEach определите параметр,
+//         назовите его например name
+//         2.3 Чтобы менять стили обратитесь к параметру name и его свойству
+//         style-->
+let products = document.querySelectorAll('.product');
+products.forEach(function(product) {
+    product.style.background = '#A9A9A9';
+});
 
-// // ПРИМЕР 2
+let productNames = document.querySelectorAll('.productName');
+productNames.forEach(function(productName) {
+    productName.style.fontSize = '24px';
+});
 
-// // 2 Чему будут равны переменные x и a в примере ниже? Написать почему так произошло
-// // (описать последовательность действий).
-let a = 2;
-let x = 1 + (a *= 2);
-// ответ 5, так как () имеют самый высокий приоритет, то сначала производим вычисление в скобках, а*=2, это тоже самое, что а = а*2 или а = 2*2, соответственно переменна а = 4, отсюда следует что х = 1+4, х = 5;
+// <!-- Задание. Найдите все дивы и добавьте им padding: 10px, для этого:
+//     1. Найдите все дивы, например с помощью getElementsByTagName.
+//     2. Затем с помощью цикла пройдитесь по этой коллекции, и обращаясь к
+//     каждому элементу, обратитесь к его свойству style, а затем к свойству
+//     padding. -->
+let divs = document.getElementsByTagName('div');
+for (let i = 0; i < divs.length; i++) {
+    divs[i].style.padding = '10px';
+};
 
+// <!-- Задание. Вызовите функцию setTimeout и ей в качестве аргументов передайте:
+//         1-аргумент. (это уже сделано) анонимную функцию, которая будет вызвана 
+//         через определенный промежуток времени
+//         2-аргумент. задержку в милисекундах, которая будет равняться 3 секундам
+//         Сделайте чтобы в анонимной функции вызывалась функция alert со строкой
+//         "message".-->
+setTimeout(function() {
+    alert('message');
+}, 3000);
 
-// // ПРИМЕР 3
+// <!-- 
+//         Задание. Сделайте, чтобы у всех инпутов снизу был внешний отступ (margin-bottom).
+//         1. Получите все инпуты, например с помощью querySelectorAll
+//         2. Переберите полученную коллекцию например с помощью forEach
+//             2.1 У функции-обработчика, которая будет передаваться в forEach определите
+//             параметр input
+//             2.2 Чтобы менять стили обращайтесь к свойству style у параметра input
+//     -->
+let inputs = document.querySelectorAll('input');
+inputs.forEach(function(input) {
+    input.style.marginBottom = '10px';
+});
 
-// // 3 Объявить две переменные a и b и задать им целочисленные произвольные начальные
-// // значения.
-// // Затем написать скрипт, который работает по следующему принципу:
-// //     -если a и b положительные, вывести их разность(ноль можно считать положительным числом);
-// //     - если а и b отрицательные, вывести их произведение;
-// // - * (этот пункт по сложнее, делайте по желанию) если а и b разных знаков, вывести их сумму;
-let a = +prompt("Введите первое число: ");
-let b = +prompt("Введите второе число: ");;
-let c = 0;
-if (a >= 0 && b >= 0) {
-    c = a - b;
-} else if (a < 0 && b < 0) {
-    c = a * b;
-} else {
-    c = a + b;
-}
-alert(c);
-
-
-// ПРИМЕР 4
-
-// 4 Реализовать основные 4 арифметические операции (+, -, /, *) в виде функций с двумя
-// параметрами. Т.е. например, функция для сложения должна принимать два числа, складывать их
-// и возвращать результат.
-// Обязательно использовать оператор return.
-
-1.
-
-function addition(a, b) {
-    let c = 0;
-    c = a + b;
-    return c;
-}
-let a = +prompt("введите первое число: ");
-let b = +prompt("введите второе число: ");
-let q = addition(a, b);
-alert("Сумма чисел равна: " + q);
-
-2.
-
-function subtract(a, b) {
-    let c = 0;
-    let d = 10;
-    c = a - b - d;
-    return c;
-}
-let a = +prompt("введите первое число: ");
-let b = +prompt("введите второе число: ");
-let q = subtract(a, b);
-alert(q);
-
-3.
-
-function splitUp(a) {
-    let c = 0;
-    c = a / 2;
-    return c;
-}
-let a = +prompt("введите число которое вы хотите поделить пополам: ");
-let q = splitUp(a);
-alert("Половина вашего числа равна " + q);
-
-4.
-
-function multiply(r) {
-    let p = 0;
-    p = 4 * 3.14 * radius();
-
-    function radius() {
-        let g = 0;
-        g = r * r;
-        return g;
-    }
-    return p;
-}
-let r = +prompt("чтобы узнать площадь планеты, укажите ее экваториальный радиус, км: ");
-let q = multiply(r);
-q = parseInt(q).toLocaleString();
-let planet = 0;
-if (r === 2440) {
-    planet = "Меркурий";
-} else if (r === 6052) {
-    planet = "Венера";
-} else if (r === 6378) {
-    planet = "Земля";
-} else if (r === 3397) {
-    planet = "Марс";
-} else if (r === 71490) {
-    planet = "Юпитер";
-} else if (r === 60270) {
-    planet = "Сатурн";
-} else if (r === 25560) {
-    planet = "Уран";
-} else if (r === 24760) {
-    planet = "Нептун";
-} else if (r === 1151) {
-    planet = "Плутон";
-} else {
-    planet = "нам неизвестна"
-}
-alert("Площедь планеты равна " + q + " км.," + " это планета " + planet);
+// <!-- 
+// Задание. Инпуты идут один за другим, надо сделать чтобы после каждого инпута
+// появился тег br, чтобы инпуты стали стоять один под другим. Для этого:
+// 1. Получите все инпуты, например с помощью querySelectorAll.
+// 2. Переберите их с помощью цикла или forEach, и после каждого инпута
+// встявляйте тег br, например с помощью insertAdjacentHTML.
+// -->
+let inputs = document.querySelectorAll('input');
+inputs.forEach(function(input) {
+    input.insertAdjacentHTML('afterend', '<br>');
+});
 
 
-// ПРИМЕР 5
+// задания 2 уровня
 
-// 5 Реализовать функцию с тремя параметрами: function mathOperation(arg1, arg2, operation),
-// где arg1, arg2 – значения аргументов, operation – строка с названием операции. В зависимости от
-// переданного значения операции (использовать switch) выполнить одну из арифметических
-// операций
-// (использовать функции из задания 4) и вернуть полученное значение.
-function mathOperation(arg1, arg2, operation) {
-    switch (operation) {
-        case "+":
-            let fold = arg1 + arg2;
-            alert("Результат равен: " + fold);
-            break;
-        case "-":
-            let subtract = arg1 - arg2;
-            alert("Результат равен: " + subtract);
-            break;
-        case "*":
-            let multiply = arg1 * arg2;
-            alert("Результат равен: " + multiply);
-            break;
-        case "/":
-            let splitUp = arg1 / arg2;
-            alert("Результат равен: " + splitUp);
-            break;
+
+// <!-- Задание.
+//     1. Сохраните в переменную ссылку на span, например с помощью querySelector.
+//     2. Сохраните в переменную fromEl ссылку на input, например с помощью getElementById.
+//     3. Элементу fromEl назначьте обработку события change, у функции обработчика
+//     этого события должен быть параметр event.
+//     4. Читайте что было написано в input'e с помощью event.target.value и пишите это
+//     значение в span.-->
+let span = document.querySelector('span');
+let fromEl = document.querySelector('input');
+fromEl.addEventListener('change', function(event) {
+    span.textContent = event.target.value;
+});
+// <!-- Задание.
+// 1. Сохраните в переменную btn ссылку на кнопку.
+// 2. Сохраните в переменную msg ссылку на .message.
+// 3. На btn назначьте обработку клика.
+//     3.1 Внутри функции-обработчика сделайте чтобы у msg display становился block.
+//     3.2 Для msg с помощью classList.add() добавьте классы animate__animated и
+//     animate__fadeInLeftBig
+// -->
+let btn = document.querySelector('button');
+let msg = document.querySelector('.message');
+btn.addEventListener('click', function() {
+    msg.style.display = 'block';
+    msg.classList.add('animate__animated', 'animate__fadeInLeftBig');
+});
+
+// <!-- Задание. Используя заготовку, сделайте чтобы при наведении на вторую звезду
+//     подсвечивались первая и вторая звезды. При наведени на третью звезду подсвечивались
+//     первая, вторая и третья звезды, и т.д. 
+//     mouseover - это событие срабатывает когда мы наводим на элемент.
+//     mouseout - это событие срабатывает когда мы перестаем наводить на элемент.-->
+let iElems = document.querySelectorAll('i');
+iElems.forEach(function(i) {
+    i.addEventListener('mouseover', function(event) {
+        addGoldenClass(event.target);
+    });
+    i.addEventListener('mouseout', function(event) {
+        removeGoldenClass(event.target);
+    });
+})
+
+function addGoldenClass(i) {
+    i.classList.add('golden');
+    let previousElem = i.previousElementSibling;
+    if (previousElem !== null && previousElem.tagName === 'I') {
+        return addGoldenClass(previousElem);
     }
 }
-let arg1 = parseInt(+prompt("введите первое число: "));
-let arg2 = parseInt(+prompt("введите второе число: "));
-let operation = prompt("Что вы хотите сделать с введенными числами? Введите нужный символ ' + '; ' - '; ' * '; ' / '");
-mathOperation(arg1, arg2, operation);
 
-lesson1
-"use strict";
-let Tc = +prompt("Введите температуру в цельсиях");
-let Tf = (9 / 5) * Tc + 32;
-alert("Температура в фарингейтах составит " + Tf);
+function removeGoldenClass(i) {
+    i.classList.remove('golden');
+    let previousElem = i.previousElementSibling;
+    if (previousElem !== null && previousElem.tagName === 'I') {
+        return removeGoldenClass(previousElem);
+    }
+}
 
-let name = "Василий";
-let admin = name;
-alert(admin);
 
-let result = 10 + 10 + "10"; // сначала складывается первое и второе число получаем 20 потом присваеваем "10", так как "10" это строка все выражение становится сторокой по этому происходит конкатенация, результат 2010.
-console.log(result);
+// задания 3 уровня
 
-let result1 = 10 + "10" + 10; // так как сложение просходит со строкой то вместо сложения происходит конкатенация, результат 101010
-console.log(result1);
 
-let result2 = 10 + 10 + +"10"; // результат будет 30, так как использован унарный + который привел строку "10" к числу 10.
-console.log(result2);
+// <!-- Задание. Надо сделать, чтобы по клику на крестик исчезало тот блок
+//     с сообщением, в котором этот крестик находится. Для этого:
+//     1. Получите все кнопки, например с помощью querySelectorAll 
+//     2. Переберите полученную коллекцию, например с помощью forEach
+//     2.1 Методу forEach передавайте callback-функцию с параметром button
+//     3. Каждому button назначьте обработчик клика, с помощью addEventListener,
+//     а самим обработчиком клика будет функция closeClickHandler (в коде ниже)
+//     4. В функции closeClickHandler из объекта события event обратитесь
+//     к currentTarget, затем обратитесь к родительскому узлу, затем к свойству
+//     style, наконец сделайте display: none
+//     -->
+let buttons = document.querySelectorAll('button');
+buttons.forEach(function(button) {
+    button.addEventListener('click', closeClickHandler);
+});
 
-let result3 = 10 / -""; // в "" значение числовое отрицательное NaN, поэтому результат, - infiniti
-console.log(result3);
+function closeClickHandler(event) {
+    event.currentTarget.parentNode.style.display = 'none';
+};
 
-let result4 = 10 / +"2,5"; // результат равен NaN, так как в JS разделение идет (.), поэтому js не видет числа и не может поделить число на строку, а так подазревает что результатом должно быть число выдает нам NaN
-console.log(result4);
-main
+// !-- Задание. Нужно чтобы при клике по кнопке блок .product в котором она
+//     находится становился цвета lightgreen, а текст на кнопке стал "Добавлено",
+//     для этого:
+//     1. Найдите все кнопки, например с помощью querySelectorAll
+//     2. Переберите полученную коллекцию кнопок, например с помощью forEach,
+//     и каждой кнопке назначьте в качестве обработчика клика фукнцию
+//     buttonClickHandler (увидите ее ниже в коде)
+//     3. Когда функция buttonClickHandler будет срабатывать вы из объекта
+//     события получаете элемент на котором произошло событие (свойство target),
+//     затем получаете родителя кнопки по коротой кликнули (свойство parentNode),
+//     затем обращаетесь к свойству style, а затем к свойству background и
+//     ставите цвет lightgreen.
+//     3.1 Также во время срабатывания функции buttonClickHandler из обекта
+//     события (параметр event) вы получаете кнопку на которой произошло
+//     событие (свойство target) и меняете у нее текст на "Добавлено".-->
+let buttons = document.querySelectorAll('button');
+buttons.forEach(function(button) {
+    button.addEventListener('click', buttonClickHandler);
+});
+
+function buttonClickHandler(event) {
+    event.target.parentNode.style.background = 'lightgreen';
+    event.target.textContent = 'Добавлено';
+}
+// <!-- 
+//         Задание. Вам нужно проверять пусто ли в input'ах при отправке формы.
+//         Если в инпуте пусто делаете ему красную рамку. Если хотя бы в одном
+//         инпуте пусто форма не должна отправляться.
+//         1. сохраните в переменную formEl ссылку на форму
+//         2. сохраните в переменную ссылку на input#first
+//         3. сохраните в переменную ссылку на input#second
+//         4. на formEl назначьте обработку события отправки формы (submit),
+//         у функции-обработчика объявите параметр event.
+//             4.1 в функции-обработчике вы проверяете пусты ли input'ы, для этого
+//             читайте у них свойство value
+//             4.2 если input пустой тогда вы обращаетесь к его style.borderColor
+//             и делаете его равным red
+//             4.3 чтобы остановить отправку формы используйте event.preventDefault()
+//      -->
+let formEl = document.querySelector('form');
+let firstInput = document.getElementById('first');
+let secondInput = document.getElementById('second');
+
+formEl.addEventListener('submit', function(event) {
+    let firstInputEmpty = firstInput.value === '';
+    let secondInputEmpty = secondInput.value === '';
+
+    if (firstInputEmpty) {
+        firstInput.style.borderColor = 'red';
+    }
+    if (secondInputEmpty) {
+        secondInput.style.borderColor = 'red';
+    }
+    if (firstInputEmpty || secondInputEmpty) {
+        event.preventDefault();
+    }
+});
+
+// <!-- 
+//     Задание. Сделайте, чтобы при прокрутке от верха экрана больше чем на 500px появлялся
+//     блок #goToTop, а если меньше, то чтобы исчезал.
+//     1. Сохраните в переменную goToTopEl ссылку на div#goToTop
+//     2. Назначьте обработку события scroll для объекта window.
+//     3. В функции-обработчике проверяйте величину window.pageYOffset если она больше
+//     500, тогда goToTopEl надо показать, иначе скрыть.
+//     4. Показывайте и скрывайте с помощью свойства display у объекта style.
+//     -->
+let goToTopEl = document.getElementById('goToTop');
+window.addEventListener('scroll', function() {
+    if (window.pageYOffset > 500) {
+        goToTopEl.style.display = 'block';
+    } else {
+        goToTopEl.style.display = 'none';
+    }
+});
+
+// <!-- Задание. Нужно через 3 секунды заменить все картинки loading.gif на картинки
+//     из папки images.
+//     1. Получите все картинки например с помощью querySelectorAll
+//     2. Переберите эту коллекцию с помощью цикла for, в цикле каждой картинке
+//     установите атрибут src (например с помощью setAttribute) равный 
+//     "images/здесь_нужно_поставить_правильное_имя_файла".
+//     3. Наконец весь код оберните в setTimeout, и выставите задержку 3 сек.
+//     -->
+setTimeout(function() {
+    let images = document.querySelectorAll('img');
+    for (let i = 0; i < images.length; i++) {
+        images[i].setAttribute('src', `images/${i + 1}.jpg`);
+    }
+}, 3000);
