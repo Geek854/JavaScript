@@ -1,197 +1,319 @@
-lesson2
+// lesson7
 "use strict";
 
+// 1 уровень
 
-// // ПРИМЕР 1
+const products = {
+    one: "один",
+    two: "два",
+    three: "три",
+};
 
-// // 1 Объясните почему код даёт именно такие результаты?
-// //пример 1
-let a = 1,
-    b = 1,
-    c, d;
-c = ++a;
-alert(c); // ответ: 2, потому что инкремент увеличел значение операнда да 1;
-//пример 2
-d = b++;
-alert(d); //ответ: 1, постфиксная форма, значене операнда увеличется после выполнения каманды;
-//пример 3
-c = 2 + ++a;
-alert(c); //ответ: 5, так как а уже равно 2 , операнд увеличит а на 1, то значение а станет 3. 2+3=5;
-//пример 4
-d = 2 + b++;
-alert(d); //ответ: 4, постфиксная форма, значене операнда увеличется после выполнения каманды, но так как предидущие действия в примере 2 с помощью постфиксной формы увеличили операнд на еденицу и он стал равен 2, то соответственно 2+2=4.
-alert(a); //3, так как после примера 3, ни коких действий с переменно а не было значение осталось равным 3.
-alert(b); //3, так как в римере 4, использовалась постфиксная форма, значение операнда увеличилось на 1, соответствено переменная b стала равна 3.
+/* 
+Задание.
+Используя цикл for in переберите объект products, ведите в консоль
+имя свойства, значение свойства.
+*/
 
-
-// // ПРИМЕР 2
-
-// // 2 Чему будут равны переменные x и a в примере ниже? Написать почему так произошло
-// // (описать последовательность действий).
-let a = 2;
-let x = 1 + (a *= 2);
-// ответ 5, так как () имеют самый высокий приоритет, то сначала производим вычисление в скобках, а*=2, это тоже самое, что а = а*2 или а = 2*2, соответственно переменна а = 4, отсюда следует что х = 1+4, х = 5;
-
-
-// // ПРИМЕР 3
-
-// // 3 Объявить две переменные a и b и задать им целочисленные произвольные начальные
-// // значения.
-// // Затем написать скрипт, который работает по следующему принципу:
-// //     -если a и b положительные, вывести их разность(ноль можно считать положительным числом);
-// //     - если а и b отрицательные, вывести их произведение;
-// // - * (этот пункт по сложнее, делайте по желанию) если а и b разных знаков, вывести их сумму;
-let a = +prompt("Введите первое число: ");
-let b = +prompt("Введите второе число: ");;
-let c = 0;
-if (a >= 0 && b >= 0) {
-    c = a - b;
-} else if (a < 0 && b < 0) {
-    c = a * b;
-} else {
-    c = a + b;
+for (let prop in products) {
+    console.log(prop);
+    console.log(products[prop]);
 }
-alert(c);
 
+// <!-- Задание. С помощью innerHTML очистите содержимое параграфа.-->
+let p = document.querySelector('p');
+p.innerHTML = '';
 
-// ПРИМЕР 4
+let totalString = "";
 
-// 4 Реализовать основные 4 арифметические операции (+, -, /, *) в виде функций с двумя
-// параметрами. Т.е. например, функция для сложения должна принимать два числа, складывать их
-// и возвращать результат.
-// Обязательно использовать оператор return.
+/* Задание.
+Дописывайте в строку totalString с помощью цикла и конкатенации строки,
+так, чтобы итоговое значение в totalString получилось: слово1слово2слово3
+*/
 
-1.
-
-function addition(a, b) {
-    let c = 0;
-    c = a + b;
-    return c;
+for (let i = 1; i <= 3; i++) {
+    totalString += `слово${i}`;
 }
-let a = +prompt("введите первое число: ");
-let b = +prompt("введите второе число: ");
-let q = addition(a, b);
-alert("Сумма чисел равна: " + q);
+console.log(totalString);
 
-2.
+// <!-- <a href="https://picsum.photos/200/300" target="_blank">ссылка</a> -->
+//     <!-- 
+//     Задание.
+//     С помощью insertAdjacentHTML добавьте в body ссылку по примеру из комментария выше.
+//     При создании разметки используйте шаблонный литерал. Данные для ссылки ниже.
+//     -->
+let url = "https://picsum.photos/200/300";
+let targetAttr = "_blank";
+let linkText = "ссылка";
+document.body.insertAdjacentHTML('afterbegin', `<a href="${url}" target="${targetAttr}">${linkText}</a>`);
 
-function subtract(a, b) {
-    let c = 0;
-    let d = 10;
-    c = a - b - d;
-    return c;
+// 2 уровень
+
+// <!-- Задание. Нужно при клике на кнопку выводить в консоль значения ее
+// data- атрибутов.
+// 1. Получите все кнопки например с помощью querySelectorAll
+// 2. Переберите полученную коллекцию, например с помощью forEach
+// 2.1 data- атрибуты можете читать например с помощью свойства dataset у каждой кнопки.-->
+let buttons = document.querySelectorAll('button');
+buttons.forEach(function(button) {
+    button.addEventListener('click', function(event) {
+        console.log(event.target.dataset.id);
+        console.log(event.target.dataset.value);
+    });
+});
+
+// <!-- <img src="https://picsum.photos/200/300?random=1" alt="pic1">
+//      <img src="https://picsum.photos/200/300?random=2" alt="pic2">
+//      <img src="https://picsum.photos/200/300?random=3" alt="pic3"> -->
+// /* Задание.
+// С помощью цилка for добавьте в body 6 картинок, по примеру тех, что закомментированы выше. Картинки вставляйте со помощью insertAdjacentHTML. При генерации разметки пользуйтесь шаблонным литералом. Куда должен вставляться счетчик цилка смотрите ниже:
+//<img src="https://picsum.photos/200/300?random=${счетчик_цикла_здесь}" alt="pic${счетчик_цикла_здесь}"> */
+
+for (let i = 0; i < 6; i++) {
+    let markup = `<img src="https://picsum.photos/200/300?random=${i}" alt="pic${i}">`;
+    document.body.insertAdjacentHTML('afterbegin', markup);
 }
-let a = +prompt("введите первое число: ");
-let b = +prompt("введите второе число: ");
-let q = subtract(a, b);
-alert(q);
 
-3.
+// <!-- Задание. Нужно чтобы при смещении ползунка в div менялся размер шрифта.
+//     1. Получите ссылку на input.
+//     2. Получите ссылку на div.
+//     3. Input'у поставьте прослушивание события 'input';
+//         3.1 У функции-обработчика определите параметр event.
+//         3.2 Значение input'а читайте из event.target.value.-->
+let inputel = document.querySelector('input');
+let divEl = document.querySelector('div');
+inputel.addEventListener('input', function(event) {
+    divEl.style.fontSize = event.target.value + 'px';
+});
 
-function splitUp(a) {
-    let c = 0;
-    c = a / 2;
-    return c;
+
+// 3 уровень
+
+
+const texts = {
+    text1: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+    text2: 'Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты.',
+    text3: 'Проснувшись однажды утром после беспокойного сна, Грегор Замза обнаружил.'
+};
+
+/* 
+1. Получите ссылку на .text, например с помощью querySelector
+2. Получите коллекцию, в которой хранятся все .nav-link, например с помощью querySelectorAll
+    2.1 Переберите полученную коллекцию, например с помощью forEach, и каждой ссылке назначьте
+    обработчик клика функцию clickHandler.
+*/
+
+let textEl = document.querySelector('.text');
+
+let navLinks = document.querySelectorAll('.nav-link');
+navLinks.forEach(function(link) {
+    link.addEventListener('click', clickHandler);
+});
+
+/**
+ * Обработчик клика по .nav-link
+ * @param {MouseEvent} event 
+ */
+function clickHandler(event) {
+    // здесь вызывайте changeText и changeActiveClass, и передавайте
+    // им объект события.
+    changeText(event);
+    changeActiveClass(event);
 }
-let a = +prompt("введите число которое вы хотите поделить пополам: ");
-let q = splitUp(a);
-alert("Половина вашего числа равна " + q);
 
-4.
-
-function multiply(r) {
-    let p = 0;
-    p = 4 * 3.14 * radius();
-
-    function radius() {
-        let g = 0;
-        g = r * r;
-        return g;
-    }
-    return p;
+/**
+ * Эта функция должна убирать .active у предыдущего .nav-link и ставить его
+ * на тот, по которому кликнули.
+ * @param {MouseEvent} event 
+ */
+function changeActiveClass(event) {
+    document.querySelector('.active').classList.remove('active');
+    event.target.classList.add('active');
 }
-let r = +prompt("чтобы узнать площадь планеты, укажите ее экваториальный радиус, км: ");
-let q = multiply(r);
-q = parseInt(q).toLocaleString();
-let planet = 0;
-if (r === 2440) {
-    planet = "Меркурий";
-} else if (r === 6052) {
-    planet = "Венера";
-} else if (r === 6378) {
-    planet = "Земля";
-} else if (r === 3397) {
-    planet = "Марс";
-} else if (r === 71490) {
-    planet = "Юпитер";
-} else if (r === 60270) {
-    planet = "Сатурн";
-} else if (r === 25560) {
-    planet = "Уран";
-} else if (r === 24760) {
-    planet = "Нептун";
-} else if (r === 1151) {
-    planet = "Плутон";
-} else {
-    planet = "нам неизвестна"
-}
-alert("Площедь планеты равна " + q + " км.," + " это планета " + planet);
 
-
-// ПРИМЕР 5
-
-// 5 Реализовать функцию с тремя параметрами: function mathOperation(arg1, arg2, operation),
-// где arg1, arg2 – значения аргументов, operation – строка с названием операции. В зависимости от
-// переданного значения операции (использовать switch) выполнить одну из арифметических
-// операций
-// (использовать функции из задания 4) и вернуть полученное значение.
-function mathOperation(arg1, arg2, operation) {
-    switch (operation) {
-        case "+":
-            let fold = arg1 + arg2;
-            alert("Результат равен: " + fold);
+/**
+ * Эта фукнция должна читать текст (например через textContent) из 
+ * .nav-link по которому кликнули и в зависимости от этого в .text
+ * ставить соответствующий текст из texts.
+ * @param {MouseEvent} event 
+ */
+function changeText(event) {
+    switch (event.target.textContent) {
+        case "Link 1":
+            textEl.textContent = texts.text1;
             break;
-        case "-":
-            let subtract = arg1 - arg2;
-            alert("Результат равен: " + subtract);
+        case "Link 2":
+            textEl.textContent = texts.text2;
             break;
-        case "*":
-            let multiply = arg1 * arg2;
-            alert("Результат равен: " + multiply);
-            break;
-        case "/":
-            let splitUp = arg1 / arg2;
-            alert("Результат равен: " + splitUp);
+        case "Link 3":
+            textEl.textContent = texts.text3;
             break;
     }
 }
-let arg1 = parseInt(+prompt("введите первое число: "));
-let arg2 = parseInt(+prompt("введите второе число: "));
-let operation = prompt("Что вы хотите сделать с введенными числами? Введите нужный символ ' + '; ' - '; ' * '; ' / '");
-mathOperation(arg1, arg2, operation);
 
-lesson1
-"use strict";
-let Tc = +prompt("Введите температуру в цельсиях");
-let Tf = (9 / 5) * Tc + 32;
-alert("Температура в фарингейтах составит " + Tf);
+// <!-- 
+//     Задание. Вам нужно чтобы при клике на кнопку появлялось сообщение .message
+//     снизу экрана, в общем как сообщения вконтакте.
+//     1. Аудио воспроизводите как здесь https://developer.mozilla.org/en-US/docs/Web/API/HTMLAudioElement
+//     2. Чтобы получить высоту .message, используйте свойство clientHeight
+//     3. Чтобы анимировать перемещение .message используйте стиль transform
+//     как здесь https://webref.ru/css/value/translatey
+//     -->
+let notification = new Audio('notification.mp3');
+let message = document.querySelector('.message');
+let button = document.querySelector('button');
+button.addEventListener('click', function() {
+    let messageHeight = message.clientHeight;
+    message.style.transform = `translateY(-${40 + messageHeight}px)`;
+    notification.play();
+});
 
-let name = "Василий";
-let admin = name;
-alert(admin);
 
-let result = 10 + 10 + "10"; // сначала складывается первое и второе число получаем 20 потом присваеваем "10", так как "10" это строка все выражение становится сторокой по этому происходит конкатенация, результат 2010.
-console.log(result);
 
-let result1 = 10 + "10" + 10; // так как сложение просходит со строкой то вместо сложения происходит конкатенация, результат 101010
-console.log(result1);
+// 4 уровень
 
-let result2 = 10 + 10 + +"10"; // результат будет 30, так как использован унарный + который привел строку "10" к числу 10.
-console.log(result2);
 
-let result3 = 10 / -""; // в "" значение числовое отрицательное NaN, поэтому результат, - infiniti
-console.log(result3);
+/* 
+Разметка товара:
 
-let result4 = 10 / +"2,5"; // результат равен NaN, так как в JS разделение идет (.), поэтому js не видет числа и не может поделить число на строку, а так подазревает что результатом должно быть число выдает нам NaN
-console.log(result4);
-main
+<div class="product">
+    <div>${здесь_название_товара}</div>
+    <img src="${здесь путь до картинки}" alt="">
+    <div>${здесь_цена}</div>
+    <a href="https://example.com/producs/${здесь_id_товара}">Подробнее</a>
+</div>
+*/
+
+const products = {
+    phones: [{
+            id: 1,
+            name: "Смартфон 1",
+            price: "23,99 р.",
+            imageUrl: "https://picsum.photos/seed/1/200",
+        },
+        {
+            id: 2,
+            name: "Смартфон 2",
+            price: "11,99 р.",
+            imageUrl: "https://picsum.photos/seed/2/200",
+        },
+        {
+            id: 3,
+            name: "Смартфон 3",
+            price: "22,99 р.",
+            imageUrl: "https://picsum.photos/seed/3/200",
+        },
+    ],
+
+    tablets: [{
+            id: 4,
+            name: "Планшет 4",
+            price: "99,99 р.",
+            imageUrl: "https://picsum.photos/seed/4/200",
+        },
+        {
+            id: 5,
+            name: "Планшет 5",
+            price: "44,99 р.",
+            imageUrl: "https://picsum.photos/seed/5/200",
+        },
+    ],
+
+    tv: [{
+            id: 6,
+            name: "Телевизор 6",
+            price: "199,99 р.",
+            imageUrl: "https://picsum.photos/seed/6/200",
+        },
+        {
+            id: 7,
+            name: "Телевизор 7",
+            price: "244,99 р.",
+            imageUrl: "https://picsum.photos/seed/7/200",
+        },
+        {
+            id: 8,
+            name: "Телевизор 8",
+            price: "399,99 р.",
+            imageUrl: "https://picsum.photos/seed/8/200",
+        },
+        {
+            id: 9,
+            name: "Телевизор 9",
+            price: "444,99 р.",
+            imageUrl: "https://picsum.photos/seed/9/200",
+        },
+    ],
+};
+
+const productsEl = document.querySelector(".products");
+const buttons = document.querySelectorAll("button");
+buttons.forEach(function(button) {
+    button.addEventListener("click", clickHandler);
+});
+
+/**
+ * Эта функция должна вызываться при клике по кнопкам.
+ * @param {MouseEvent} event
+ */
+function clickHandler(event) {
+    //вам нужно очищать .products
+    productsEl.innerHTML = "";
+    //в showCategory надо передать строку с типом категории, тип берите
+    //из атрибута data-type у кнопки, по которой кликнули.
+    showCategory(event.target.dataset.type);
+}
+
+/**
+ * Сюда должно прилетать значение атрибута data-type у кнопки,
+ * по которой кликнули.
+ * @param {string} category 
+ */
+function showCategory(category) {
+    const categoryProducts = products[category];
+    let markupToProductsDiv = "";
+    categoryProducts.forEach(function(product) {
+        markupToProductsDiv += getProductMarkup(product);
+    });
+    productsEl.insertAdjacentHTML("afterbegin", markupToProductsDiv);
+}
+
+/**
+ * @param {Object} product объект из массива phones, tablets или tv.
+ * @param {number} product.id id продукта
+ * @param {string} product.name название продукта
+ * @param {string} product.price цена продукта
+ * @param {string} product.imageUrl путь до картинки товара
+ * @returns {string} html-разметка для товара
+ */
+function getProductMarkup(product) {
+    return `
+            <div class="product">
+                <div>${product.name}</div>
+                <img src="${product.imageUrl}" alt="">
+                <div>${product.price}</div>
+                <a href="https://example.com/producs/${product.id}">Подробнее</a>
+            </div>
+        `;
+}
+
+let div = document.querySelector('div');
+
+function changeProgress(percent) {
+    div.style.background = `linear-gradient(90deg, rgba(38,255,162,1) ${percent}%, rgba(255,255,255,1) ${percent}%)`;
+}
+
+/* 
+Вам нужно в цикле создать отложенные вызовы с помощью setTimeout. Т.е. в цикле должны
+быть вызовы функции setTimeout.
+1. В условии цикла должно быть i <= 100, т.к. именно значение счетчика будем
+передавать в changeProgress, а там процент не может превышать 100.
+2. В setTimeout вторым параметром надо передавать задержку, используйте счетчик цикла,
+можете также добавить какой-нибудь коэффициент, чтобы подобрать желаемую скорость
+заполнения прогресс-бара.
+*/
+for (let i = 0; i <= 100; i++) {
+    setTimeout(function() {
+        changeProgress(i);
+    }, i * 40);
+};

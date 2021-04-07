@@ -1,0 +1,31 @@
+.nav {
+    margin-top: 30px;
+}
+
+.message {
+    width: 300px;
+    color: white;
+    font-family: sans-serif;
+    padding: 15px;
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: calc(100vh + 20px);
+    transition-duration: 0.5s;
+}
+
+.products {
+    overflow: hidden;
+    margin-top: 40px;
+}
+
+.product {
+    float: left;
+    margin-right: 20px;
+}
+
+div {
+    border: 1px solid black;
+    height: 40px;
+    width: 300px;
+}
