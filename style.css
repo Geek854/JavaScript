@@ -1,0 +1,89 @@
+/* 1 текст вместо картинки */
+
+body {
+    display: grid;
+    grid-template-columns: repeat(3, 150px);
+    grid-gap: 20px;
+}
+
+.product {
+    width: 150px;
+}
+
+img {
+    display: block;
+}
+
+button {
+    margin-top: 15px;
+    display: block;
+}
+
+
+/* 2 подгрузка постов */
+
+body {
+    margin: 0;
+}
+
+.container {
+    width: 1000px;
+    margin: 0 auto;
+    min-height: 100vh;
+    box-shadow: 0 0 10px gray;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+img {
+    float: left;
+    margin-right: 15px;
+}
+
+.post {
+    overflow: hidden;
+    text-align: justify;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid gray;
+}
+
+
+/* 3 шахматная доска */
+
+table {
+    border-collapse: collapse;
+}
+
+td {
+    width: 40px;
+    height: 40px;
+    border: 1px solid black;
+    text-align: center;
+}
+
+.white {
+    background: #FFCF73;
+}
+
+.black {
+    background: #7a5000;
+}
+
+tr:last-child td:first-child {
+    border-left: none;
+    border-bottom: none;
+}
+
+.whiteFigure {
+    color: white;
+}
+
+.blackFigure {
+    color: black;
+}
+
+i {
+    font-size: 24px;
+    text-shadow: 0 0 3px grey;
+}
